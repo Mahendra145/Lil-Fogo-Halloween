@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lil Fogo Halloween</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Creepster&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/5.3.1/fabric.min.js"></script>
+</head>
+<body>
+
+    <div id="intro-screen" class="screen active">
+        <div class="intro-logo-container">
+            <img src="assets/pumpkin1.png" alt="Pumpkin" class="intro-pumpkin">
+            <img src="assets/fogo-logo.png" alt="FOGO Logo" class="intro-logo">
+            <img src="assets/pumpkin2.png" alt="Pumpkin" class="intro-pumpkin">
+        </div>
+        <p class="typing-sentence">Welcome to Lil fogo Halloween edition factory</p>
+    </div>
+
+    <div id="app-container" class="app-container">
+        <div class="editor-container">
+            <img src="assets/fogo-logo.png" alt="FOGO Logo" class="editor-fogo-logo">
+            <p class="editor-subtitle">Lil Fogo Halloween edition Factory</p>
+            <div class="canvas-wrapper">
+                <canvas id="editorCanvas"></canvas>
+                <div id="uploadPlaceholder">Upload your PFP to start</div>
+            </div>
+            <div class="main-controls">
+                <button id="uploadBtn">1. Upload Your PFP</button>
+                <input type="file" id="pfpUpload" hidden>
+                <button id="downloadBtn">2. Download PFP</button>
+                <button id="deleteBtn">3. Delete Selected</button>
+            </div>
+              <footer>
+        <p>
+            Thanks to <a href="https://x.com/Prateek0102" target="_blank">Prateek</a> for creating the Lil Accessories
+        </p>
+              </footer>
+        </div>
+        <div class="sidebar">
+            <h2 class="halloween-font">2. Add Costumes</h2>
+            <div class="trait-categories">
+
+                <h3 class="halloween-font">Backgrounds</h3>
+                <div class="trait-items">
+                    <div class="trait-card" data-trait="assets/spooky-forest.png" data-type="background">
+                        <img src="assets/spooky-forest.png" alt="Spooky Forest"><span>Forest</span>
+                    </div>
+                    <div class="trait-card" data-trait="assets/graveyard.png" data-type="background">
+                        <img src="assets/graveyard.png" alt="Graveyard"><span>Graveyard</span>
+                    </div>
+                </div>
+
+                <h3 class="halloween-font">Lil Hats</h3>
+                <div class="trait-items">
+                    <div class="trait-card" data-trait="assets/witch-hat.png"><img src="assets/witch-hat.png" alt="Witch Hat"><span>Witch Hat</span></div>
+                    <div class="trait-card" data-trait="assets/devil-horns.png"><img src="assets/devil-horns.png" alt="Devil Horns"><span>Devil Horns</span></div>
+                </div>
+                <h3 class="halloween-font">Lil Glasses</h3>
+                <div class="trait-items">
+                    <div class="trait-card" data-trait="assets/spooky-glasses.png"><img src="assets/spooky-glasses.png" alt="Spooky Glasses"><span>Spooky</span></div>
+                    <div class="trait-card" data-trait="assets/3d-glasses.png"><img src="assets/3d-glasses.png" alt="3D"><span>3D</span></div>
+                </div>
+                <h3 class="halloween-font">Lil Pumpkins</h3>
+                <div class="trait-items">
+                    <div class="trait-card" data-trait="assets/jack-o-lantern.png"><img src="assets/jack-o-lantern.png" alt="Jack-o-lantern"><span>Jack-o-lantern</span></div>
+                    <div class="trait-card" data-trait="assets/smiling-pumpkin.png"><img src="assets/smiling-pumpkin.png" alt="Smiling"><span>Smiling</span></div>
+                </div>
+            </div>
+            <button id="clearBtn">Clear Traits</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+<script src="script.js" defer></script>
+
+</body>
+</html>
