@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- This is the updated viewport tag that locks zooming on mobile -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Lil Fogo Halloween</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Creepster&display=swap" rel="stylesheet">
@@ -21,8 +22,10 @@
 
     <div id="app-container" class="app-container">
         <div class="editor-container">
-            <img src="assets/fogo-logo.png" alt="FOGO Logo" class="editor-fogo-logo">
-            <p class="editor-subtitle">Lil Fogo Halloween edition Factory</p>
+            <div class="editor-header">
+                <img src="assets/fogo-logo.png" alt="FOGO Logo" class="editor-fogo-logo">
+                <p class="editor-subtitle">Lil Fogo Halloween edition Factory</p>
+            </div>
             <div class="canvas-wrapper">
                 <canvas id="editorCanvas"></canvas>
                 <div id="uploadPlaceholder">Upload your PFP to start</div>
@@ -33,16 +36,15 @@
                 <button id="downloadBtn">2. Download PFP</button>
                 <button id="deleteBtn">3. Delete Selected</button>
             </div>
-              <footer>
-        <p>
-            Thanks to <a href="https://x.com/Prateek0102" target="_blank">Prateek</a> for creating the Lil Accessories
-        </p>
-              </footer>
+            <footer>
+                <p>
+                    Thanks to <a href="https://x.com/Prateek0102" target="_blank">Prateek</a> for creating the Lil Accessories
+                </p>
+            </footer>
         </div>
         <div class="sidebar">
             <h2 class="halloween-font">2. Add Costumes</h2>
             <div class="trait-categories">
-
                 <h3 class="halloween-font">Backgrounds</h3>
                 <div class="trait-items">
                     <div class="trait-card" data-trait="assets/spooky-forest.png" data-type="background">
@@ -52,7 +54,6 @@
                         <img src="assets/graveyard.png" alt="Graveyard"><span>Graveyard</span>
                     </div>
                 </div>
-
                 <h3 class="halloween-font">Lil Hats</h3>
                 <div class="trait-items">
                     <div class="trait-card" data-trait="assets/witch-hat.png"><img src="assets/witch-hat.png" alt="Witch Hat"><span>Witch Hat</span></div>
@@ -73,8 +74,8 @@
         </div>
     </div>
 
-    <script src="script.js"></script>
-<script src="script.js" defer></script>
+    <!-- There is now only one script tag, with 'defer' to prevent loading errors -->
+    <script src="script.js" defer></script>
 
 </body>
 </html>
