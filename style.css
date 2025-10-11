@@ -1,5 +1,5 @@
+/* This sets the DEFAULT background (for the intro page) */
 body {
-    /* The default dark texture for the intro */
     background-color: #1a1a1a;
     background-image: url('https://www.transparenttextures.com/patterns/dark-matter.png');
     color: #fff;
@@ -10,13 +10,10 @@ body {
     min-height: 100vh;
     padding: 20px;
     box-sizing: border-box;
-    /* This is important for the background image to work correctly */
-    position: relative; 
 }
 
-/* This will apply your custom background to the entire page when the app is active */
 body.editor-active {
-    background-image: url('assets/my-awesome-background.jpg'); /* <-- DOUBLE-CHECK YOUR FILENAME */
+    background-image: url('assets/my-awesome-background.jpg'); /* <-- Use YOUR background image name */
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -44,9 +41,11 @@ body.editor-active {
 .app-container { display: none; }
 #app-container.active {
     display: flex;
+    flex-direction: row;
     width: 100%;
     max-width: 1200px;
     gap: 30px;
+    align-items: flex-start;
     animation: fadeIn 0.5s ease-in-out;
 }
 
@@ -70,10 +69,22 @@ body.editor-active {
 @keyframes typing { from { width: 0 } to { width: 100% } }
 @keyframes blink-caret { from, to { border-color: transparent } 50% { border-color: #ff6600; } }
 
-/* --- Editor and Sidebar (Floating Panel Look) --- */
-.editor-container { flex-grow: 1; display: flex; flex-direction: column; align-items: center; }
-.editor-fogo-logo { width: 120px; margin-bottom: 5px; }
-.editor-subtitle { font-family: 'Creepster', cursive; font-size: 1.8rem; color: #ff6600; text-shadow: 1px 1px 3px rgba(255, 102, 0, 0.5); margin-bottom: 20px; }
+/* --- Editor and Sidebar --- */
+.editor-container {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.editor-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+.editor-fogo-logo { width: 120px; margin: 0; }
+.editor-subtitle { font-family: 'Creepster', cursive; font-size: 1.8rem; color: #ff6600; text-shadow: 1px 1px 3px rgba(255, 102, 0, 0.5); margin: 0; }
 
 .canvas-wrapper {
     position: relative;
@@ -88,21 +99,18 @@ body.editor-active {
 }
 #editorCanvas { border-radius: 10px; }
 #uploadPlaceholder {
-    /* This is the fix */
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    
-    /* These styles were already here */
     color: #888;
     font-size: 1.2rem;
-    pointer-events: none; /* Make sure it doesn't block clicks */
+    pointer-events: none;
 }
 
-.main-controls { display: flex; gap: 15px; margin-top: 20px; }
+.main-controls { display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; margin-top: 20px; }
 .main-controls button {
-    padding: 15px 30px;
+    padding: 15px 20px;
     background-color: #ff6600;
     color: white;
     border: none;
@@ -115,6 +123,9 @@ body.editor-active {
 }
 .main-controls button:hover { background-color: #e65c00; }
 
+#deleteBtn { background-color: #d9534f; }
+#deleteBtn:hover { background-color: #c9302c; }
+
 .sidebar {
     width: 300px;
     background-color: #252525;
@@ -123,7 +134,13 @@ body.editor-active {
     display: flex;
     flex-direction: column;
 }
-.sidebar h2, .sidebar h3 { color: #ff6600; text-transform: uppercase; border-bottom: 2px solid #444; padding-bottom: 5px; margin-bottom: 10px; }
+.sidebar h2, .sidebar h3 {
+    color: #ff6600;
+    text-transform: uppercase;
+    border-bottom: 2px solid #444;
+    padding-bottom: 5px;
+    margin-bottom: 10px;
+}
 .sidebar h3 { font-size: 1rem; margin-top: 15px; }
 
 .trait-categories { flex-grow: 1; overflow-y: auto; }
@@ -134,17 +151,19 @@ body.editor-active {
     margin-bottom: 15px;
 }
 .trait-card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     background-color: #333;
     border-radius: 8px;
-    padding: 10px;
-    text-align: center;
+    padding: 5px;
     cursor: pointer;
     border: 2px solid transparent;
     transition: border-color 0.2s;
 }
 .trait-card:hover { border-color: #ff6600; }
-.trait-card img { width: 60px; height: 60px; object-fit: contain; }
-.trait-card span { display: block; font-size: 0.8rem; margin-top: 5px; }
+.trait-card img { width: 60px; height: 60px; object-fit: contain; margin-bottom: 0; }
+.trait-card span { display: none; }
 
 #clearBtn {
     margin-top: 20px;
@@ -160,62 +179,57 @@ body.editor-active {
 }
 #clearBtn:hover { background-color: #666; }
 
-/* --- Style for the New Delete Button --- */
-
-#deleteBtn {
-    background-color: #d9534f; /* A nice red color */
-}
-
-#deleteBtn:hover {
-    background-color: #c9302c;
-}
-
-
-footer a:hover {
-    color: #fff;
-    text-decoration: underline;
-}
- /* --- NEW STYLES for Static Footer --- */
-
 footer {
     width: 100%;
     text-align: center;
     padding: 20px 0;
-    margin-top: 40px; /* Add some space above the footer */
-    color: #aaa; /* Make the main text a bit dimmer */
+    margin-top: 40px;
+    color: #aaa;
 }
+footer p { margin: 0; font-size: 0.9rem; }
+footer a { color: #ff6600; font-weight: bold; text-decoration: none; transition: color 0.2s ease; }
+footer a:hover { color: #fff; text-decoration: underline; }
 
-footer p {
-    margin: 0;
-    font-size: 0.9rem;
-}
 
-footer a {
-    color: #ff6600;
-    font-weight: bold;
-    text-decoration: none;
-    transition: color 0.2s ease;
-}
+/* --- MOBILE STYLES for Side-by-Side Layout --- */
+@media (max-width: 800px) {
+    #app-container.active {
+        gap: 10px;
+    }
+    
+    .editor-container {
+        width: 60%;
+    }
 
-footer a:hover {
-    color: #fff;
-    text-decoration: underline;
-}
+    .canvas-wrapper {
+        width: 100%;
+        height: auto;
+        aspect-ratio: 1 / 1;
+    }
 
-/* --- Hides the names on the trait cards --- */
+    .sidebar {
+        width: 40%;
+        padding: 10px;
+    }
 
-.trait-card span {
-    display: none; /* This hides the text element */
-}
+    .trait-items {
+        grid-template-columns: 1fr;
+    }
 
-/* This optional part re-centers the image vertically now that the text is gone */
-.trait-card {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 5px; /* Adjust padding slightly */
-}
+    .main-controls button {
+        font-size: 0.7rem;
+        padding: 10px;
+    }
 
-.trait-card img {
-    margin-bottom: 0; /* Remove the space that was below the image */
+    .editor-subtitle {
+        font-size: 1rem;
+    }
+    
+    .editor-fogo-logo {
+        width: 60px;
+    }
+
+    footer {
+        display: none;
+    }
 }
