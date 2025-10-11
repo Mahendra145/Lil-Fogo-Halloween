@@ -191,45 +191,50 @@ footer a { color: #ff6600; font-weight: bold; text-decoration: none; transition:
 footer a:hover { color: #fff; text-decoration: underline; }
 
 
-/* --- MOBILE STYLES for Side-by-Side Layout --- */
+/* --- FINAL MOBILE STYLES (Vertical Stack) --- */
+/* This code only applies on screens 800px or smaller */
 @media (max-width: 800px) {
-    #app-container.active {
-        gap: 10px;
+    body {
+        padding: 0;
     }
-    
+
+    #app-container.active {
+        flex-direction: column; /* This is the key: stacks items vertically */
+        padding: 10px;
+        gap: 20px;
+        width: 100%;
+    }
+
     .editor-container {
-        width: 60%;
+        width: 100%;
     }
 
     .canvas-wrapper {
-        width: 100%;
-        height: auto;
-        aspect-ratio: 1 / 1;
+        width: 95vw; /* Make canvas responsive to the screen width */
+        height: 95vw; /* Keep it square */
     }
-
+    
     .sidebar {
-        width: 40%;
-        padding: 10px;
+        width: 100%; /* Make sidebar full width */
+        max-height: 40vh; /* Give it a max height and allow scrolling */
     }
 
     .trait-items {
-        grid-template-columns: 1fr;
-    }
-
-    .main-controls button {
-        font-size: 0.7rem;
-        padding: 10px;
-    }
-
-    .editor-subtitle {
-        font-size: 1rem;
+        /* Show more items horizontally on mobile for easier selection */
+        grid-template-columns: repeat(4, 1fr);
     }
     
+    .editor-header {
+        margin-bottom: 10px;
+    }
+    .editor-subtitle {
+        font-size: 1.2rem;
+    }
     .editor-fogo-logo {
-        width: 60px;
+        width: 50px;
     }
 
     footer {
-        display: none;
+        margin-top: 20px;
     }
 }
