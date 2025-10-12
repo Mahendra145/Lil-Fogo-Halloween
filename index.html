@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <!-- This is the updated viewport tag that locks zooming on mobile -->
+    <!-- This is the crucial line for mobile: it locks zoom and sets the scale -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Lil Fogo Halloween</title>
     <link rel="stylesheet" href="style.css">
@@ -48,33 +48,32 @@
                 <h3 class="halloween-font">Backgrounds</h3>
                 <div class="trait-items">
                     <div class="trait-card" data-trait="assets/spooky-forest.png" data-type="background">
-                        <img src="assets/spooky-forest.png" alt="Spooky Forest"><span>Forest</span>
+                        <img src="assets/spooky-forest.png" alt="Spooky Forest">
                     </div>
                     <div class="trait-card" data-trait="assets/graveyard.png" data-type="background">
-                        <img src="assets/graveyard.png" alt="Graveyard"><span>Graveyard</span>
+                        <img src="assets/graveyard.png" alt="Graveyard">
                     </div>
                 </div>
                 <h3 class="halloween-font">Lil Hats</h3>
                 <div class="trait-items">
-                    <div class="trait-card" data-trait="assets/witch-hat.png"><img src="assets/witch-hat.png" alt="Witch Hat"><span>Witch Hat</span></div>
-                    <div class="trait-card" data-trait="assets/devil-horns.png"><img src="assets/devil-horns.png" alt="Devil Horns"><span>Devil Horns</span></div>
+                    <div class="trait-card" data-trait="assets/witch-hat.png"><img src="assets/witch-hat.png" alt="Witch Hat"></div>
+                    <div class="trait-card" data-trait="assets/devil-horns.png"><img src="assets/devil-horns.png" alt="Devil Horns"></div>
                 </div>
                 <h3 class="halloween-font">Lil Glasses</h3>
                 <div class="trait-items">
-                    <div class="trait-card" data-trait="assets/spooky-glasses.png"><img src="assets/spooky-glasses.png" alt="Spooky Glasses"><span>Spooky</span></div>
-                    <div class="trait-card" data-trait="assets/3d-glasses.png"><img src="assets/3d-glasses.png" alt="3D"><span>3D</span></div>
+                    <div class="trait-card" data-trait="assets/spooky-glasses.png"><img src="assets/spooky-glasses.png" alt="Spooky Glasses"></div>
+                    <div class="trait-card" data-trait="assets/3d-glasses.png"><img src="assets/3d-glasses.png" alt="3D"></div>
                 </div>
                 <h3 class="halloween-font">Lil Pumpkins</h3>
                 <div class="trait-items">
-                    <div class="trait-card" data-trait="assets/jack-o-lantern.png"><img src="assets/jack-o-lantern.png" alt="Jack-o-lantern"><span>Jack-o-lantern</span></div>
-                    <div class="trait-card" data-trait="assets/smiling-pumpkin.png"><img src="assets/smiling-pumpkin.png" alt="Smiling"><span>Smiling</span></div>
+                    <div class="trait-card" data-trait="assets/jack-o-lantern.png"><img src="assets/jack-o-lantern.png" alt="Jack-o-lantern"></div>
+                    <div class="trait-card" data-trait="assets/smiling-pumpkin.png"><img src="assets/smiling-pumpkin.png" alt="Smiling"></div>
                 </div>
             </div>
             <button id="clearBtn">Clear Traits</button>
         </div>
     </div>
 
-    <!-- There is now only one script tag, with 'defer' to prevent loading errors -->
     <script src="script.js" defer></script>
 
 </body>
