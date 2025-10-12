@@ -1,4 +1,4 @@
-/* This sets the DEFAULT background (for the intro page) */
+/* --- Default Background and Font Settings --- */
 body {
     background-color: #1a1a1a;
     background-image: url('https://www.transparenttextures.com/patterns/dark-matter.png');
@@ -13,43 +13,34 @@ body {
 }
 
 body.editor-active {
-    background-image: url('assets/my-awesome-background.jpg'); /* <-- Use YOUR background image name */
+    background-image: url('assets/my-awesome-background.jpg'); /* <-- Use your custom background image name here */
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     background-attachment: fixed;
 }
 
-/* --- Halloween Font Class --- */
 .halloween-font {
     font-family: 'Creepster', cursive !important;
     text-shadow: 2px 2px 5px rgba(255, 102, 0, 0.5);
 }
 
-/* Screen Management */
-.screen { display: none; }
-.screen.active {
+/* --- Screen Management for Intro/App Transition --- */
+.screen, .app-container {
+    display: none;
+}
+.screen.active, #app-container.active {
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
     animation: fadeIn 0.5s ease-in-out;
 }
 @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
-/* Main App Container */
-.app-container { display: none; }
-#app-container.active {
-    display: flex;
-    flex-direction: row;
-    width: 100%;
-    max-width: 1200px;
-    gap: 30px;
-    align-items: flex-start;
-    animation: fadeIn 0.5s ease-in-out;
+/* --- Intro Screen Specific Styles --- */
+#intro-screen {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
-
-/* Intro Screen */
 .intro-logo-container { display: flex; justify-content: center; align-items: center; gap: 20px; margin-bottom: 20px; }
 .intro-logo { width: 200px; animation: bloom 2.5s infinite alternate; }
 .intro-pumpkin { width: 80px; animation: bloom 2.5s infinite alternate; }
@@ -69,20 +60,23 @@ body.editor-active {
 @keyframes typing { from { width: 0 } to { width: 100% } }
 @keyframes blink-caret { from, to { border-color: transparent } 50% { border-color: #ff6600; } }
 
-/* --- Editor and Sidebar --- */
+/* --- Main App Layout (Desktop) --- */
+#app-container.active {
+    flex-direction: row;
+    width: 100%;
+    max-width: 1200px;
+    gap: 30px;
+    align-items: flex-start;
+}
+
+/* --- Editor and Sidebar Styles --- */
 .editor-container {
     flex-grow: 1;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
-
-.editor-header {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    margin-bottom: 20px;
-}
+.editor-header { display: flex; align-items: center; gap: 15px; margin-bottom: 20px; }
 .editor-fogo-logo { width: 120px; margin: 0; }
 .editor-subtitle { font-family: 'Creepster', cursive; font-size: 1.8rem; color: #ff6600; text-shadow: 1px 1px 3px rgba(255, 102, 0, 0.5); margin: 0; }
 
@@ -100,8 +94,7 @@ body.editor-active {
 #editorCanvas { border-radius: 10px; }
 #uploadPlaceholder {
     position: absolute;
-    top: 50%;
-    left: 50%;
+    top: 50%; left: 50%;
     transform: translate(-50%, -50%);
     color: #888;
     font-size: 1.2rem;
@@ -122,7 +115,6 @@ body.editor-active {
     transition: background-color 0.2s ease;
 }
 .main-controls button:hover { background-color: #e65c00; }
-
 #deleteBtn { background-color: #d9534f; }
 #deleteBtn:hover { background-color: #c9302c; }
 
@@ -162,7 +154,7 @@ body.editor-active {
     transition: border-color 0.2s;
 }
 .trait-card:hover { border-color: #ff6600; }
-.trait-card img { width: 60px; height: 60px; object-fit: contain; margin-bottom: 0; }
+.trait-card img { width: 60px; height: 60px; object-fit: contain; }
 .trait-card span { display: none; }
 
 #clearBtn {
@@ -191,11 +183,10 @@ footer a { color: #ff6600; font-weight: bold; text-decoration: none; transition:
 footer a:hover { color: #fff; text-decoration: underline; }
 
 
-/* --- FINAL MOBILE STYLES (Vertical Stack) --- */
-/* This code only applies on screens 800px or smaller */
-@media (max-width: 800px) {
+/* --- FINAL MOBILE STYLES (Vertical Stack Layout) --- */
+@media (max-width: 900px) {
     body {
-        padding: 0;
+        padding: 0; /* Use full screen width on mobile */
     }
 
     #app-container.active {
@@ -205,36 +196,46 @@ footer a:hover { color: #fff; text-decoration: underline; }
         width: 100%;
     }
 
-    .editor-container {
-        width: 100%;
+    .editor-container, .sidebar {
+        width: 100%; /* Make both containers full-width */
     }
 
     .canvas-wrapper {
-        width: 95vw; /* Make canvas responsive to the screen width */
+        width: 95vw; /* Make canvas responsive to screen width */
         height: 95vw; /* Keep it square */
     }
     
     .sidebar {
-        width: 100%; /* Make sidebar full width */
-        max-height: 40vh; /* Give it a max height and allow scrolling */
+        max-height: 45vh; /* Give it a max height and allow internal scrolling */
     }
 
     .trait-items {
-        /* Show more items horizontally on mobile for easier selection */
-        grid-template-columns: repeat(4, 1fr);
+        /* This automatically fits as many cards as possible per row */
+        grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
     }
     
     .editor-header {
-        margin-bottom: 10px;
+        margin-bottom: 15px;
     }
     .editor-subtitle {
-        font-size: 1.2rem;
+        font-size: 1.5rem;
     }
     .editor-fogo-logo {
-        width: 50px;
+        width: 80px;
     }
 
     footer {
         margin-top: 20px;
     }
 }
+```eof
+
+### What This Code Does
+
+This new CSS provides a professional, "responsive" design.
+* **On Desktop (screens wider than 900px):** It will look exactly as it does now, with the editor on the left and the sidebar on the right.
+* **On Mobile (screens 900px or smaller):** It will automatically switch to a stacked layout. The editor will be at the top, and the trait sidebar will be below it, making everything large and easy to use.
+
+
+
+This is the standard and best way to build a web app that works perfectly on all devices. Just replace your `style.css` file with this new code and upload the change to see the final result. 👍
