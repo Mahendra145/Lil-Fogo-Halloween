@@ -230,12 +230,4 @@ footer a:hover { color: #fff; text-decoration: underline; }
 }
 ```eof
 
-### What This Code Does
 
-This new CSS provides a professional, "responsive" design.
-* **On Desktop (screens wider than 900px):** It will look exactly as it does now, with the editor on the left and the sidebar on the right.
-* **On Mobile (screens 900px or smaller):** It will automatically switch to a stacked layout. The editor will be at the top, and the trait sidebar will be below it, making everything large and easy to use.
-
-
-
-This is the standard and best way to build a web app that works perfectly on all devices. Just replace your `style.css` file with this new code and upload the change to see the final result. 👍
