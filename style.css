@@ -13,7 +13,7 @@ body {
 }
 
 body.editor-active {
-    background-image: url('assets/my-awesome-background.jpg'); /* <-- Use your custom background image name here */
+    background-image: url('assets/my-awesome-background.jpg'); 
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -183,31 +183,44 @@ footer a { color: #ff6600; font-weight: bold; text-decoration: none; transition:
 footer a:hover { color: #fff; text-decoration: underline; }
 
 
-/* --- FINAL MOBILE STYLES (Vertical Stack Layout) --- */
+/* --- OPTIMIZED MOBILE STYLES (Vertical Stack Layout) --- */
 @media (max-width: 900px) {
     body {
-        padding: 0; /* Use full screen width on mobile */
+        padding: 0;
     }
 
     #app-container.active {
-        flex-direction: column; /* This is the key: stacks items vertically */
+        flex-direction: column; 
         padding: 10px;
         gap: 20px;
         width: 100%;
     }
 
     .editor-container, .sidebar {
-        width: 100%; /* Make both containers full-width */
+        width: 100%; 
+        box-sizing: border-box; /* Ensures padding doesn't break layout */
     }
 
     .canvas-wrapper {
-        width: 95vw; /* Make canvas responsive to screen width */
-        height: 95vw; /* Keep it square */
+        width: 95vw; 
+        height: 95vw; 
     }
     
     .sidebar {
-        max-height: 45vh; /* Give it a max height and allow internal scrolling */
+        max-height: 45vh; 
     }
+
+    /* Stacks the main buttons vertically so they are easy to tap */
+    .main-controls {
+        flex-direction: column;
+        width: 95%; /* Make them wide but not full edge-to-edge */
+        align-items: center;
+    }
+    .main-controls button {
+        width: 100%; /* Each button takes full width */
+        font-size: 0.9rem; /* Slightly smaller text for small screens */
+    }
+
 
     .trait-items {
         /* This automatically fits as many cards as possible per row */
@@ -228,6 +241,3 @@ footer a:hover { color: #fff; text-decoration: underline; }
         margin-top: 20px;
     }
 }
-```eof
-
-
