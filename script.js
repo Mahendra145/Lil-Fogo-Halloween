@@ -11,10 +11,16 @@ document.addEventListener('DOMContentLoaded', () => {
         document.body.classList.add('editor-active'); 
     }, 5000);
 
-    // --- Initialize Fabric.js Canvas ---
+   // Check if we are on a mobile-sized screen (matches your CSS breakpoint)
+    const isMobile = window.innerWidth <= 900;
+
     const canvas = new fabric.Canvas('editorCanvas', {
         width: 500,
         height: 500,
+        // --- THIS IS THE FIX ---
+        // This allows the page to scroll when you drag your finger
+        // vertically over the canvas on a mobile device.
+        allowTouchScrolling: isMobile
     });
 
     // --- Get Editor Elements ---
@@ -131,4 +137,5 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
     });
+
 });
