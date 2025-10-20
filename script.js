@@ -11,16 +11,22 @@ document.addEventListener('DOMContentLoaded', () => {
         document.body.classList.add('editor-active'); 
     }, 5000);
 
-   // Check if we are on a mobile-sized screen (matches your CSS breakpoint)
+    // Check if we are on a mobile-sized screen (matches your CSS breakpoint)
     const isMobile = window.innerWidth <= 900;
 
     const canvas = new fabric.Canvas('editorCanvas', {
         width: 500,
         height: 500,
-        // --- THIS IS THE FIX ---
-        // This allows the page to scroll when you drag your finger
-        // vertically over the canvas on a mobile device.
-        allowTouchScrolling: isMobile
+
+        // --- THIS IS THE FIX (TWO PARTS) ---
+
+        // 1. Allows the page to scroll when you drag your finger
+        //    vertically over the canvas.
+        allowTouchScrolling: isMobile,
+
+        // 2. Disables drag-to-select (drawing the blue box) on mobile.
+        //    This is what's blocking your scroll on the empty area.
+        selection: !isMobile
     });
 
     // --- Get Editor Elements ---
@@ -139,3 +145,4 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
 });
+
