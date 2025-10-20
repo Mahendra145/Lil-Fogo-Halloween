@@ -16,10 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const canvas = new fabric.Canvas('editorCanvas', {
         width: 500,
         height: 500,
-
-        // 2. This disables "drag-to-select" (the blue box)
-        //    on BOTH PC and Mobile.
-        //    This stops the empty canvas from dragging.
+        
         selection: false
     });
     // --- Get Editor Elements ---
@@ -138,5 +135,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
 });
+
 
 
